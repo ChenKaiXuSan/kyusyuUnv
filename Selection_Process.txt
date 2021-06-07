@@ -1,0 +1,80 @@
+ == Selection Process ==
+
+In our lab, we focus on top AI research, publishing on various top journals/conferences and shaping the future of AI. 
+Hence, we seek people to join our team who are self-motivated, highly skilled and have a competitive attitude towards research in general.
+
+The selection process is based on two stages:
+	1. Task based. This is the stage that is covered here.
+	2. Skype interview. To quality for the skype you are required to complete at least one basic and one advanced task and prepare an elaborated report about the tasks solved. 
+
+In this assignment, there are two types of tasks:
+    - 5 Basic tasks under the header [B]
+    - 12 Advanced tasks under the header [A]
+
+Also, there is a subtype for some of the tasks to highlight what I expect from it.
+    - Tasks that focus on mathematical, analytical or both skills have the header {M}
+    - Challenging tasks either in terms of background knowledge or execution have the header {X}
+
+The evaluation criteria for this assignment are as follows:
+	- Difficulty of the tasks performed (Task)
+	- Amount of tasks completed (Task)
+	- Quality of the execution (Task and Report)
+	- Quality of the presentation (Report)
+	- X-Factor (for the tasks that are less likely to be attempted by other candidates)
+
+Regarding submission:
+	- upload the source code and a single report (report should be in pdf format) in free file hosting services such as: mediafire, 4shared, mega, zippyshare.
+	- send the links by email.
+
+Some comments:
+	- You are free and encouraged to do more tasks.
+	- The report should be self explainable (i.e., include all information necessary to understand what you did and the detailed procedure used in the experiments) and with pictures of the results achieved.
+	- In the report, separate each of the tasks with a subheading using its respective [letter number] as well as some small descritpion (e.g., [B1] Image Reconstruction). 
+	- Incomplete tasks can also be included in the report if you consider them relevant. If you include them, you should mention that they are incomplete in the subheading. 
+	- Good luck and happy coding!
+
+===== BASIC TASKS =====
+
+
+	[B1] Reconstruct images from CIFAR, MNIST or both from noisy images. 
+	[B2] Train a neural network to calculate the similarity between images in CIFAR, MNIST or both. 
+	[B3] Apply a single deep learning network to CIFAR, MNIST or both and then modify the dataset to one in which the network perform statistically worse than before. 
+	[B4] Choose an artificial intelligent system to discuss/analyze from a math/probabilistic point of view.
+	[B5] Use chaos theory, dynamical systems or game theory to analyze an artificial intelligent system.
+	[B6] Create an algorithm for Blind Signal Separation (BSS) of 2 and 3 soundwaves.
+
+
+===== ADVANCED TASKS =====
+
+
+----- Single and Multi-objective Optimization -----
+
+	[A1] Create a new variation of an evolutionary algorithm (try to use Deep Learning) and compare its performance with a similar algorithm already published.
+	[A2]{M} Provide an in-depth mathematical analysis of an evolutionary algorithm or something related to it. 
+Note: I will consider this a {X} task if the analysis is over "optimization forces" explained in the paper "State-of-the-art Subpopulation algorithm based on the General Subpopulation Framework".
+
+----- SyncMap (Self-Organizing Systems) -----
+
+	[A2] Take a look at the paper "Continual General Chunking Problem and SyncMap". Download the code mentioned in the arxiv version. Your task is to improve more than 5% in both Overlap1 and Overlap2. Explain the results.
+	[A3]{X} Remove DBSCAN from SyncMap. Use edges and weights to determine clusters. Your results is to both decrease the variance from SyncMap and increase accuracy in most of the tasks.
+
+----- Multi-agents -----
+
+	[A5] Develop a multi-agent system to classify some dataset. For hints of a multi-agent system you can take a look at, for example, Novelty-organizing Classifiers. You are free to change as much as you want but it must be based on multi-agents.
+	[A6]{X} Develop a variation of a multi-agent system to tackle MNIST or a dynamic reinforcement learning task. You can take a look at Novelty-organizing Classifiers for hints.
+	[A7]{M} Create a mathematical analysis of either Self-Organizing Classifiers or Novelty Organizing Classifiers and compare it with Learning Classifier Systems. You can search the internet for already existing theory on Learning Classifier Systems.
+
+--- Reservoir Networks ---
+
+	[A8] Create a reservoir network to solve a given task. Make slight changes to it to improve its performance on the same tests.
+
+--- Robustness, GANs, Reinforcement Learning and Predictive Encoding ---
+
+	[A9] Review briefly predictive encoding and create a predictive encoding model on CIFAR10 and attack it to verify its robustness.
+	Check current predictive encoding networks and also some sites like the following: https://towardsdatascience.com/a-new-kind-of-deep-neural-networks-749bcde19108
+	For attacks check online for famous attacks and their implementation
+	[A10] Use GANs inside MuZero to improve its results. Discuss the results.
+
+--- Blind Signal Separation ---
+
+	[A11] Create a system that can do Blind Signal Separation in time, i.e., without using any type of Fourier Transform.

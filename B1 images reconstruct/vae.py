@@ -86,6 +86,11 @@ def loss_fn(recon_x, x, mu, logvar):
     # 0.5 * sum(1 + log(sigma^2) - mu^2 - sigma^2)
     KLD = -0.5 * torch.sum(1 + logvar - mu**2 -  logvar.exp())
     return BCE + KLD
+
+# %%
+import os 
+if not os.path.exists('reconstructed'):
+    os.makedirs('reconstructed')
 # %%
 for epoch in range(epochs):
     for idx, (images, _) in enumerate(data_loader):

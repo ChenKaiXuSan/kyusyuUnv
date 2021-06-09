@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 data/
-B1 images reconstruct/reconstructed
+B1_images_reconstruct/reconstructed

@@ -66,12 +66,14 @@ Let’s call this the value function:
 $V(G,D)=\Epsilon_{x∼p_{data}}[log(D(x))]+\Epsilon_{z∼p_z}[log(1−D(G(z)))]$
 
 In reality, we are more interested in the distribution modeled by the generator than $p_z$. Therefore, let’s create a new variable, $y=G(z)$, and use this substitution to rewrite the value function:
+
 $$
 \begin{aligned}
 V(G,D)&=\Epsilon_{x∼p_{data}}[log(D(x))]+\Epsilon_{y∼p_g}[log(1−D(y))]\\ 
 &=\int_{x\in\chi}p_{data}(x)log(D(x))+p_g(x)log(1−D(x))dx
 \end{aligned}
 $$
+
 The goal of the discriminator is to maximize this value function. 
 Through a partial derivative of $V(G,D)$ with respect to $D(x)$, we see that the optimal discriminator, denoted as $D∗(x)$, occurs when
 
@@ -105,8 +107,33 @@ $$
 \end{aligned}
 $$
 
+For this, what we want to do is that we are exploiting the properties of logarithms to pull out a −log4 that previously did not exist. In pulling out this number, we inevitably apply changes to the terms in the expectation, specifically by dividing the denominator by two.
 
+And then, we can now interpret the expectations as Kullback-Leibler divergence:
+
+$V(G,D^∗)=−\log4+D_{KL}(p_{data}||\frac{p_{data}+p_g}{2})+D_{KL}(p_g||\frac{p_{data}+p_g}{2})$
+
+And it is here that we reencounter the Jensen-Shannon divergence, which is defined as:
+
+$J(P,Q)=\frac{1}{2}(D(P||R)+D(Q||R))$
+
+where $R=\frac{1}{2}(P+Q)$.
+This means that the expression in $V(G,D^*)$ can be expressed as a JS divergence:
+
+$V(G,D^∗)=−\log4+2⋅D_{JS}(p_{data}||p_g)$
+
+The conclusion of this analysis is simple: 
+the goal of training the generator, which is to minimize the value function V(G,D), we want the JS divergence between the distribution of the data and the distribution of generated examples to be as small as possible. 
+
+This conclusion certainly aligns with our intuition: 
+we want the generator to be able to learn the underlying distribution of the data from sampled training examples. In other words, $p_g$ and $p_{data}$ should be as close to each other as possible. The optimal generator G is thus one that which is able to mimic $p_{data}$ to model a compelling model distribution $p_g$.
+
+## About Jensen–Shannon divergence
+In probability theory and statistics, the Jensen–Shannon divergence is a method of measuring the similarity between two probability distributions. 
+It is also known as information radius (IRad) or total divergence to the average.It is based on the Kullback–Leibler divergence, with some notable (and useful) differences, including that it is symmetric and it always has a finite value. The square root of the Jensen–Shannon divergence is a metric often referred to as Jensen-Shannon distance.
 ## Reference 
 1. Wang Y. A Mathematical Introduction to Generative Adversarial Nets (GAN)[J]. arXiv preprint arXiv:2009.00169, 2020.
 2. Goodfellow I J, Pouget-Abadie J, Mirza M, et al. Generative adversarial networks[J]. arXiv preprint arXiv:1406.2661, 2014.
 3. Goodfellow I. Nips 2016 tutorial: Generative adversarial networks[J]. arXiv preprint arXiv:1701.00160, 2016.
+4. [The Math Behind GANs](https://jaketae.github.io/study/gan-math/)
+5. [Jensen–Shannon divergence](https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence)

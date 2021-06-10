@@ -4,7 +4,7 @@ So the first thing I think of is GANs.
 
 The GAN is that put two neural networks contest with each other in a game (in the form of a zero-sum game, where one agent's gain is another agent's loss).
 And the input of Generator is a noize, so i think the GAN can do well result in this task. 
-But the noise input to Generator is randomly obtained data from the Gaussian function, and has nothing relation with noisy images.
+But the noise input to Generator is randomly obtained data from the standard normal distribution, and has nothing relation with noisy images or orignal images.
 
 Then I thought of Variational autoencoder(VAE).  
 The aim of an autoencoder is to learn a representation (encoding) for a set of data, typically for dimensionality reduction, by training the network to ignore signal “noise”.

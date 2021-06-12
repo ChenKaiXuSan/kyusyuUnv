@@ -16,7 +16,8 @@ opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 urllib.request.install_opener(opener)
 # %%
 epsilons = [0, .05, .1, .15, .2, .25, .3]
-pretrained_model = "./lenet_mnist_model.pth"
+# pretrained_model = ".lenet_mnist_model.pth"
+pretrained_model = "Basic_Tasks\B3_modify_dataset\lenet_mnist_model.pth"
 use_cuda=True
 # %%
 # LeNet Model definition

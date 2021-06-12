@@ -1,4 +1,6 @@
 # %%
+from __future__ import print_function
+
 import argparse
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR100 Training')
@@ -10,8 +12,6 @@ args = parser.parse_args([])
 
 # %%
 '''Train CIFAR with PyTorch.'''
-from __future__ import print_function
-
 import argparse
 import os
 

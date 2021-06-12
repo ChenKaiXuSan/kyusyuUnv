@@ -12,3 +12,55 @@ Training: Epoch=0 | Loss: 1.916 |  Acc: 27.208% (13604/50000) | best acc: 0.000
 Testing: Epoch=0 | Loss: 1.534 |  Acc: 43.340% (4334/10000) | best_acc: 0.000
 
 Training Setting: batchsize=64 | epoch=1 | lr=1.0e-02 
+
+Training Setting: batchsize=128 | epoch=0 | lr=1.0e-02 
+Training: Epoch=0 | Loss: 2.002 |  Acc: 23.672% (11836/50000) | best acc: 0.000
+Testing: Epoch=0 | Loss: 1.765 |  Acc: 35.070% (3507/10000) | best_acc: 0.000
+
+Training Setting: batchsize=128 | epoch=1 | lr=1.0e-02 
+Training: Epoch=1 | Loss: 1.535 |  Acc: 43.540% (21770/50000) | best acc: 35.070
+Testing: Epoch=1 | Loss: 1.376 |  Acc: 51.850% (5185/10000) | best_acc: 35.070
+
+Training Setting: batchsize=128 | epoch=2 | lr=1.0e-02 
+Training: Epoch=2 | Loss: 1.179 |  Acc: 57.948% (28974/50000) | best acc: 51.850
+Testing: Epoch=2 | Loss: 1.018 |  Acc: 62.690% (6269/10000) | best_acc: 51.850
+
+Training Setting: batchsize=128 | epoch=3 | lr=1.0e-02 
+Training: Epoch=3 | Loss: 0.919 |  Acc: 67.812% (33906/50000) | best acc: 62.690
+Testing: Epoch=3 | Loss: 0.858 |  Acc: 69.560% (6956/10000) | best_acc: 62.690
+
+Training Setting: batchsize=128 | epoch=4 | lr=1.0e-02 
+Training: Epoch=4 | Loss: 0.750 |  Acc: 74.314% (37157/50000) | best acc: 69.560
+Testing: Epoch=4 | Loss: 0.790 |  Acc: 72.540% (7254/10000) | best_acc: 69.560
+
+Training Setting: batchsize=128 | epoch=5 | lr=1.0e-02 
+Training: Epoch=5 | Loss: 0.653 |  Acc: 77.826% (38913/50000) | best acc: 72.540
+Testing: Epoch=5 | Loss: 0.616 |  Acc: 79.410% (7941/10000) | best_acc: 72.540
+
+Training Setting: batchsize=128 | epoch=6 | lr=1.0e-02 
+Training: Epoch=6 | Loss: 0.557 |  Acc: 81.096% (40548/50000) | best acc: 79.410
+Testing: Epoch=6 | Loss: 0.559 |  Acc: 81.360% (8136/10000) | best_acc: 79.410
+
+Training Setting: batchsize=128 | epoch=7 | lr=1.0e-02 
+Training: Epoch=7 | Loss: 0.497 |  Acc: 83.128% (41564/50000) | best acc: 81.360
+Testing: Epoch=7 | Loss: 0.507 |  Acc: 83.020% (8302/10000) | best_acc: 81.360
+
+Training Setting: batchsize=128 | epoch=8 | lr=1.0e-02 
+Training: Epoch=8 | Loss: 0.443 |  Acc: 84.994% (42497/50000) | best acc: 83.020
+Testing: Epoch=8 | Loss: 0.489 |  Acc: 83.880% (8388/10000) | best_acc: 83.020
+
+Training Setting: batchsize=128 | epoch=9 | lr=1.0e-02 
+Training: Epoch=9 | Loss: 0.403 |  Acc: 86.310% (43155/50000) | best acc: 83.880
+Testing: Epoch=9 | Loss: 0.431 |  Acc: 85.840% (8584/10000) | best_acc: 83.880
+
+Training Setting: batchsize=128 | epoch=10 | lr=1.0e-02 
+Training: Epoch=10 | Loss: 0.369 |  Acc: 87.540% (43770/50000) | best acc: 85.840
+Testing: Epoch=10 | Loss: 0.479 |  Acc: 85.680% (8568/10000) | best_acc: 85.840
+
+Training Setting: batchsize=128 | epoch=11 | lr=1.0e-02 
+Training: Epoch=11 | Loss: 0.337 |  Acc: 88.462% (44231/50000) | best acc: 85.840
+Testing: Epoch=11 | Loss: 0.419 |  Acc: 86.510% (8651/10000) | best_acc: 85.840
+
+Training Setting: batchsize=128 | epoch=12 | lr=1.0e-02 
+Training: Epoch=12 | Loss: 0.318 |  Acc: 89.184% (44592/50000) | best acc: 86.510
+Testing: Epoch=12 | Loss: 0.388 |  Acc: 87.480% (8748/10000) | best_acc: 86.510

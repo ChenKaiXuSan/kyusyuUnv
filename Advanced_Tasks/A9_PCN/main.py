@@ -30,7 +30,7 @@ from utils import tensor2var , progress_bar
 use_cuda = torch.cuda.is_available() # choose to use gpu if possible
 best_acc = 0  # best test accuracy
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
-batchsize = 64 #batch size
+batchsize = 128 #batch size
 # %%
 # Path
 root = './'
@@ -48,7 +48,7 @@ if not os.path.isdir(checkpointpath):
     os.mkdir(checkpointpath)
 if not os.path.isdir(logpath):
     os.mkdir(logpath)
-while(os.path.isfile(checkpointpath + modelname + '_last_ckpt.t7')): 
+while(os.path.isfile(checkpointpath + modelname + '_last_ckpt')): 
     rep += 1
     modelname = model+'_'+str(args.lr)+'LR_'+str(args.cls)+'CLS_'+str(rep)+'REP'  
     

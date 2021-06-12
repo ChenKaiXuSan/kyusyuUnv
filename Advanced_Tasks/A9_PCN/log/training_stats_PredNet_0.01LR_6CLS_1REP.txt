@@ -6,3 +6,9 @@ Training Setting: batchsize=64 | epoch=1 | lr=1.0e-02
 Training: Epoch=1 | Loss: 1.485 |  Acc: 45.684% (22842/50000) | best acc: 0.000
 
 Training Setting: batchsize=64 | epoch=2 | lr=1.0e-02 
+
+Training Setting: batchsize=64 | epoch=0 | lr=1.0e-02 
+Training: Epoch=0 | Loss: 1.916 |  Acc: 27.208% (13604/50000) | best acc: 0.000
+Testing: Epoch=0 | Loss: 1.534 |  Acc: 43.340% (4334/10000) | best_acc: 0.000
+
+Training Setting: batchsize=64 | epoch=1 | lr=1.0e-02 

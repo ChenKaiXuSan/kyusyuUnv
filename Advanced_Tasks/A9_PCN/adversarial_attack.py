@@ -13,10 +13,11 @@ import matplotlib.pyplot as plt
 from prednet import *
 from utils import tensor2var
 import torch.backends.cudnn as cudnn
+from main import args
 
 # %%
 epsilons = [0, .05, .1, .15, .2, .25, .3, .5, 1.]
-pretrained_model = "checkpoint/PredNet_0.01LR_6CLS_1REP_best_ckpt"
+pretrained_model = "checkpoint/PredNet_0.01LR_6CLS_2REP_best_ckpt"
 use_cuda=True
 
 # %% 
@@ -93,13 +94,11 @@ def test_attack( net, device, test_loader, epsilon ):
         total += targets.size(0)
         correct += predicted.eq(targets.data).cpu().sum()
         
-        # if batch_idx % 100 == 0:
-        #     print('eps:', epsilon)
-        #     print(batch_idx, len(testloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
-        #         % (test_loss/(batch_idx+1), 100.*(float)(correct)/(float)(total), correct, total))
-    
     final_acc = 100.*(float)(correct)/(float)(total)
     print("Epsilon: {}\tTest Accuracy = {} / {} = {}%".format(epsilon, correct, total, final_acc))
+
+    statstr = "Epsilon: {}\tTest Accuracy = {} / {} = {}%".format(epsilon, correct, total, final_acc)
+    statfile.write(statstr+'\n')
     
 # %% 
 # Testing
@@ -120,14 +119,16 @@ def test(net, test_loader):
         total += targets.size(0)
         correct += predicted.eq(targets.data).cpu().sum()
 
-        # if batch_idx % 100 == 0:
-        #     print(batch_idx, len(testloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
-        #         % (test_loss/(batch_idx+1), 100.*(float)(correct)/(float)(total), correct, total))
-    
     final_acc = 100.*(float)(correct)/(float)(total)
     print("without attack\tTest Accuracy = {} / {} = {}%".format(correct, total, final_acc))
+
+    statstr = "without attack\tTest Accuracy = {} / {} = {}%".format(correct, total, final_acc)
+    statfile.write(statstr+'\n')
     
 # %%
+logpath = './log/attack_log.log'
+statfile = open(logpath, 'a+')
+
 # Run test for each epsilon
 test(net, testloader)
 for eps in epsilons:

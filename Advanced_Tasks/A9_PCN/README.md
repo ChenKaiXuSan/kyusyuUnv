@@ -7,6 +7,8 @@ But it is trained for next-frame video prediction not the image.
 And then i find a paper named [1], they propose a predictive coding networks(PCN).
 The PCN is used for object recogntion, so i have a implement with it on CIFAR10.
 
+The network structure is like the next figure. 
+
 And then, like task B3, i use the adversarial attack to verify its robustness. 
 The training log is saved ./log folder, and the adversarial attack result is saved in the same folder. 
 

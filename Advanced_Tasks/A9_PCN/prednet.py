@@ -37,28 +37,6 @@ class FBconv2d(nn.Module):
         x = self.convtranspose2d(x)
         return x 
 
-# FFconv2d and FBconv2d share weights 
-class Conv2d(nn.Module):
-    def __init__(self, inchan, outchan, sample=False):
-        super().__init__()
-        self.kernel_size = 3 
-        self.weights = nn.init.xavier_normal(torch.Tensor(outchan, inchan, self.kernel_size, self.kernel_size))
-        self.weights = nn.Parameter(self.weights, requires_grad=True)
-        self.sample = sample
-        if self.sample:
-            self.Downsample = nn.MaxPool2d(kernel_size=2, stride=2)
-            self.Upsample = nn.Upsample(scale_factor=2, mode='bilinear')
-
-    def forward(self, x, feedforward=True):
-        if feedforward:
-            x = F.conv2d(x, self.weights, stride=1, padding=1)
-            if self.sample:
-                x = self.Downsample(x)
-            else:
-                if self.sample:
-                    x = self.Upsample(x)
-                x = F.conv_transpose2d(x, self.weights, stride=1, padding=1)
-            return x 
 # %%
 # PredNet 
 class PredNet(nn.Module):
@@ -100,7 +78,7 @@ class PredNet(nn.Module):
         for i in range(1, self.nlays):
             xr.append(F.relu(self.FFconv[i](xr[i-1])))
 
-        # Dynamic proces 
+        # Dynamic process 
         for t in range(self.cls):
 
             # Feedback prediction 

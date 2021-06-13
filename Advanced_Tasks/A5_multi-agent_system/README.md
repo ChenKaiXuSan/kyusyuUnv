@@ -1,0 +1,1 @@
+# Develop a multi-agent system to classify some dataset. For hints of a multi-agent system you can take a look at, for example, Novelty-organizing Classifiers. You are free to change as much as you want but it must be based on multi-agents.

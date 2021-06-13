@@ -126,7 +126,7 @@ def test(net, test_loader):
     statfile.write(statstr+'\n')
     
 # %%
-logpath = './log/attack_log.log'
+logpath = './log/attack_log.txt'
 statfile = open(logpath, 'a+')
 
 # Run test for each epsilon

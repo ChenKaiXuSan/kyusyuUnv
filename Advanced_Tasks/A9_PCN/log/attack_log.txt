@@ -1,0 +1,10 @@
+without attack	Test Accuracy = 9375 / 10000 = 93.75%
+Epsilon: 0	Test Accuracy = 5348 / 10000 = 53.48%
+Epsilon: 0.05	Test Accuracy = 4372 / 10000 = 43.72%
+Epsilon: 0.1	Test Accuracy = 3749 / 10000 = 37.49%
+Epsilon: 0.15	Test Accuracy = 3312 / 10000 = 33.12%
+Epsilon: 0.2	Test Accuracy = 2989 / 10000 = 29.89%
+Epsilon: 0.25	Test Accuracy = 2752 / 10000 = 27.52%
+Epsilon: 0.3	Test Accuracy = 2547 / 10000 = 25.47%
+Epsilon: 0.5	Test Accuracy = 2027 / 10000 = 20.27%
+Epsilon: 1.0	Test Accuracy = 1483 / 10000 = 14.83%

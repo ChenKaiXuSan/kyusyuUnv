@@ -17,9 +17,9 @@ torch.set_default_dtype(dtype)
 # %%
 # Dataloader
 if dtype == torch.double:
-    data = np.loadtxt('data/mg17.csv', delimiter=',', dtype=np.float64)
+    data = np.loadtxt('dataset/mg17.csv', delimiter=',', dtype=np.float64)
 elif dtype == torch.float:
-    data = np.loadtxt('data/mg17.csv', delimiter=',', dtype=np.float32)
+    data = np.loadtxt('dataset/mg17.csv', delimiter=',', dtype=np.float32)
 
 X_data = np.expand_dims(data[:, [0]], axis=1)
 Y_data = np.expand_dims(data[:, [1]], axis=1)

@@ -11,10 +11,21 @@ Independent component analysis (ICA) is a statistical and computational techniqu
 ICA defines a generative model for the observed multivariate data, which is typically given as a large database of samples. In the model, the data variables are assumed to be linear mixtures of some unknown latent variables, and the mixing system is also unknown. The latent variables are assumed nongaussian and mutually independent, and they are called the independent components of the observed data. These independent components, also called sources or factors, can be found by ICA.
 One of the famous problem “Cocktail Party Problem” — Listening particular One person’s voice in a noisy room, is a common example which is known as an application of ICA algorithm.
 
-I have a look at [4]. It use the FastICA to estimating sources from noisy data.
+So first i look the [6], it's a implementation of a linear mixtures of signals into their underlying independent components. 
+
+And then, I have a look at [4]. It use the FastICA to estimating sources from noisy data.
+
+FastICA is an efficient and popular algorithm for independent component analysis invented by Aapo Hyvärinen at Helsinki University of Technology.Like most ICA algorithms, FastICA seeks an orthogonal rotation of prewhitened data, through a fixed-point iteration scheme, that maximizes a measure of non-Gaussianity of the rotated components. 
+Non-gaussianity serves as a proxy for statistical independence, which is a very strong condition and requires infinite data to verify. FastICA can also be alternatively derived as an approximative Newton iteration.
+
+## Algorithm
+### Prewhitening the data 
+
 
 ## Reference 
 1. [Signal separation(wikipad)](https://en.wikipedia.org/wiki/Signal_separation)
 2. [What is Independent Component Analysis?](https://www.cs.helsinki.fi/u/ahyvarin/whatisica.shtml)
 3. [Independent Component Analysis for Signal decomposition](https://medium.com/analytics-vidhya/independent-component-analysis-for-signal-decomposition-3db954ffe8aa)
 4. [Blind source separation using FastICA](https://scikit-learn.org/stable/auto_examples/decomposition/plot_ica_blind_source_separation.html)
+5. [FastICA](https://en.wikipedia.org/wiki/FastICA)
+6. [Independent Component Analysis (ICA) implementation from scratch in Python](https://github.com/akcarsten/Independent_Component_Analysis)

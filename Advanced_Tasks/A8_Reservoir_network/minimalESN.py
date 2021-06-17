@@ -1,3 +1,4 @@
+# %%
 # -*- coding: utf-8 -*-
 """
 A minimalistic Echo State Networks demo with Mackey-Glass (delay 17) data 
@@ -11,6 +12,7 @@ import matplotlib.pyplot as plt
 from scipy import linalg 
 # numpy.linalg is also an option for even fewer dependencies
 
+# %%
 # load the data
 trainLen = 2000
 testLen = 2000
@@ -18,11 +20,13 @@ initLen = 100
 data = np.loadtxt('dataset/MackeyGlass_t17.txt')
 # data = np.loadtxt('dataset/mg17.csv', delimiter=',', dtype=np.float64)
 
+# %%
 # plot some of it
 plt.figure(10).clear()
 plt.plot(data[:1000])
 plt.title('A sample of data')
 
+# %%
 # generate the ESN reservoir
 inSize = outSize = 1
 resSize = 1000
@@ -72,12 +76,14 @@ for t in range(testLen):
     ## this would be a predictive mode:
     #u = data[trainLen+t+1] 
 
+# %%
 # compute MSE for the first errorLen time steps
 errorLen = 500
 mse = sum( np.square( data[trainLen+1:trainLen+errorLen+1] - 
     Y[0,0:errorLen] ) ) / errorLen
 print('MSE = ' + str( mse ))
     
+# %%
 # plot some signals
 plt.figure(1).clear()
 plt.plot( data[trainLen+1:trainLen+testLen+1], 'g' )
@@ -94,4 +100,3 @@ plt.bar( np.arange(1+inSize+resSize), Wout[0].T )
 plt.title(r'Output weights $\mathbf{W}^{out}$')
 
 plt.show()
-

@@ -27,3 +27,4 @@ So in this task, I decide to use the Deep Echo state network(ESN) in the MNIST t
 3. Gallicchio C, Micheli A. Deep echo state network (deepesn): A brief survey[J]. arXiv preprint arXiv:1712.04323, 2017.
 4. Sun C, Song M, Hong S, et al. A Review of Designs and Applications of Echo State Networks[J]. arXiv preprint arXiv:2012.02974, 2020.
 5. [Echo state network](http://www.scholarpedia.org/article/Echo_state_network)
+6. [回声状态网络(ESN)原理详解(附源码实现)](https://blog.csdn.net/zwqhehe/article/details/77025035)

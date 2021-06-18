@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from scipy import signal
 import matplotlib.pyplot as plt 
-%matplotlib inline
 # %%
 # Set a seed for the random number generator for reproducibility
 np.random.seed(23)

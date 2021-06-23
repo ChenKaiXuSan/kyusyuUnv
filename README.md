@@ -21,7 +21,7 @@ The task i finished is bellow:
 
 ## Advanced Tasks
 - [x] [A1_NEAT](Advanced_Tasks/A1_NEAT/README.md)
-- [x] [A2_Mathematical_Analysis_ES](Advanced_Tasks/A2_Mathematical_Analysis_EC/README.md) *relevant*
+- [x] [A2_Mathematical_Analysis_ES](Advanced_Tasks/A2_Mathematical_Analysis_ES/README.md) *relevant*
 - [ ] [A5_multi-agetn_system](Advanced_Tasks/A5_multi-agent_system/README.md) *relevant* / *doing*
 - [x] [A8_Reservoir_Network](Advanced_Tasks/A8_Reservoir_network/README.md)
 - [x] [A9_PCN](Advanced_Tasks/A9_PCN/README.md)

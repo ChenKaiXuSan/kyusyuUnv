@@ -40,12 +40,12 @@ class MNIST(datasets.MNIST):
 
 def get_loaders(batch_size):
     train_loader = torch.utils.data.DataLoader(
-        MNIST("../data", train=True, download=True, transform=transforms.Compose([
+        MNIST("../../data", train=True, download=True, transform=transforms.Compose([
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor()])),
         batch_size=batch_size, shuffle=True, pin_memory=True)
     test_loader = torch.utils.data.DataLoader(
-        MNIST("../data", train=False, download=False, transform=transforms.Compose([
+        MNIST("../../data", train=False, download=False, transform=transforms.Compose([
             transforms.ToTensor()])),
         batch_size=batch_size, shuffle=False, pin_memory=True)
     return train_loader, test_loader

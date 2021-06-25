@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+# %% 
 import argparse
 
 import torch
@@ -19,30 +19,58 @@ import seaborn as sns
 
 from train import Siamese
 
-
+# %% 
 def main(args):
+    number_of_items = 15
     sns.set(style="whitegrid", font_scale=1.5)
 
     test_loader = torch.utils.data.DataLoader(
-        datasets.MNIST("../data", train=False, download=True, transform=transforms.Compose([
+        datasets.MNIST("../../data", train=False, download=True, transform=transforms.Compose([
             transforms.ToTensor()
         ])), batch_size=100, shuffle=True)
     model = torch.load(args.ck_path)
 
     model.eval()
+
     inputs, embs, targets = [], [], []
-    for x, t in tqdm(test_loader, total=len(test_loader)):
-        x = Variable(x.cuda())
-        o1 = model(x)
-        inputs.append(x.cpu().data.numpy())
+    inputs_2 = []
+    for x1, x2, t in tqdm(test_loader, total=len(test_loader)):
+        x1 = Variable(x1.cuda())
+        x2 = Variable(x2.cuda())
+        o1, o2 = model(x1), model(x2)
+
+        inputs.append(x1.cpu().data.numpy())
+        inputs_2.append(x2.cpu().data.numpy())
         embs.append(o1.cpu().data.numpy())
         targets.append(t.numpy())
 
     inputs = np.array(inputs).reshape(-1, 28, 28)
+    inputs_2 = np.array(inputs_2).reshape(-1, 28, 28)
+
     embs = np.array(embs).reshape((-1, 2))
     targets = np.array(targets).reshape((-1,))
 
     n_plots = args.n_plots
+
+    plt.figure(figsize=(20, 10))
+    for item in range(number_of_items):
+        display = plt.subplot(1, number_of_items,item+1)
+        plt.imshow(inputs[item], cmap="gray")
+        display.get_xaxis().set_visible(False)
+        display.get_yaxis().set_visible(False)
+    plt.show()
+    
+    plt.figure(figsize=(20, 10))
+    for item in range(number_of_items):
+        display = plt.subplot(1, number_of_items,item+1)
+        plt.imshow(inputs_2[item], cmap="gray")
+        display.get_xaxis().set_visible(False)
+        display.get_yaxis().set_visible(False)
+    plt.show()
+    
+    # for i in range(number_of_items):
+    #     print(y_pred[i])
+
     plt.figure(figsize=(8, 8))
     ax = plt.subplot(111)
     ax.set_title("MNIST 2D embeddigs")
@@ -57,10 +85,13 @@ def main(args):
     plt.tight_layout()
     plt.savefig("vis.png")
 
-
+# %%
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ck_path", type=str, default="H:/kyusyuUnv/B2_image_similarity/checkpoint/20.tar")
+    parser.add_argument("--ck_path", type=str, default=r"H:\kyusyuUnv\Basic_Tasks\B2_image_similarity\checkpoint\20.tar")
     parser.add_argument("--n_plots", type=int, default=500)
-    args = parser.parse_args()
+    args = parser.parse_args([])
     main(args)
+
+
+

@@ -172,6 +172,10 @@ The test loss is below:
 1%|          | 3/469 [00:00<00:20, 23.26it/s]48	0.011213	0.012027
                                              49	0.011628	0.012961
 ```
+The reult is below:
+![](img/result.png)
+In the above image, we have plotted some of the images from our testing set along with their predictions. Remember that we have trained our model in such a way that it predicts a similarity score closer to zero when the images are similar and a similarity score closer to 1 when the digits are different. 
+Therefore for the very first example, we can see that both the images are of zero and thus are quite similar. The model has accurately given the value close to zero and when the images are quite different, the model returns the number closer to 1.
 ## Reference
 1. Appalaraju S, Chaoji V. Image similarity using deep CNN and curriculum learning[J]. arXiv preprint arXiv:1709.08761, 2017.
 2. [Siamese neural network](https://en.wikipedia.org/wiki/Siamese_neural_network)

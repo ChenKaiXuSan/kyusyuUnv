@@ -19,6 +19,30 @@ Here, we can emphasise the fact that finding the transform function is not as st
 As most of the time in these cases, very complex function naturally implies neural network modelling. Then, the idea is to model the transform function by a neural network that takes as input a simple N dimensional uniform random variable and that returns as output another N dimensional random variable that should follow, after training, the the right “dog probability distribution”. Once the architecture of the network has been designed, we still need to train it. 
 In the next sections, we will discuss to train the generative networks, including the idea of adversarial training behind GANs!
 
+## Maximum likelihood estimation
+To simplify the discussion somewhat, we will focus on generative models that work via the principle of maximum likelihood. Not every generative model uses maximum likelihood. Some generative models do not use maximum likeli-hood by default, but can be made to do so (GANs fall into this category). By ignoring those models that do not use maximum likelihood, and by focusing on the maximum likelihood version of models that do not usually use maximum likelihood, we can eliminate some of the more distracting differences between different models.
+The basic idea of maximum likelihood is to define a model that provides an
+estimate of a probability distribution, parameterized by parameters θ. We then refer to the likelihood as the probability that the model assigns to the training data:
+$$\prod^m_{i=1}p_model(x^{(i)};\theta)$$
+for a dataset containing m training examples $x(i)$.
+The principle of maximum likelihood simply says to choose the parameters
+for the model that maximize the likelihood of the training data. This is easiest to do in log space, where we have a sum rather than a product over examples. This sum simplifies the algebraic expressions for the derivatives of the likelihood with respect to the models, and when implemented on a digital computer, is less prone to numerical problems, such as underflow resulting from multiplying together several very small probabilities.
+$$
+\begin{aligned}
+\theta^*&=\argmax_{\theta}\prod^m_{i=1}p_{model}(x^{(i)};\theta)\\
+&=\argmax_\theta\log\prod^m_{i=1}p_{model}(x^{(i)};\theta)\\ \tag{2}
+&=\argmax_\theta\sum^m_{i=1}\log p_{model}(x^{(1)};\theta)\\
+\end{aligned}
+$$
+In equation 2, we have used the property that $arg max_v f(v) = arg max_v log f(v)$
+for positive $v$, because the logarithm is a function that increases everywhere and does not change the location of the maximum.
+
+We can also think of maximum likelihood estimation as minimizing the KL divergence between the data generating distribution and the model:
+$$
+\theta^*=\argmin_\theta D_{kl}(p_{data}(x)||p_{model}(x;\theta))
+$$
+If we were able to do this precisely, then if $p_{data}$ lies within the family of distributions $p_{model}(x; θ)$, the model would recover $p_{data}$ exactly. In practice, we do not have access to pdata itself, but only to a training set consisting of m samples from $p_{data}$. We uses these to define $\widehat{p}_{data}$, an empirical distribution that places mass only on exactly those m points, approximating pdata. Minimizing the KL divergence between $\widehat{p}_{data}$ and $p_{model}$ is exactly equivalent to maximizing the log-likelihood of the training set.
+![max_likelihood](img/max_likelihood.png)
 ## Generative Adversarial Networks
 In other words,
 **Discriminator**: The role is to distinguish between actual and generated (fake) data.
@@ -146,7 +170,13 @@ we want the generator to be able to learn the underlying distribution of the dat
 
 ## About Jensen–Shannon divergence
 In probability theory and statistics, the Jensen–Shannon divergence is a method of measuring the similarity between two probability distributions. 
-It is also known as information radius (IRad) or total divergence to the average.It is based on the Kullback–Leibler divergence, with some notable (and useful) differences, including that it is symmetric and it always has a finite value. The square root of the Jensen–Shannon divergence is a metric often referred to as Jensen-Shannon distance.
+It is also known as information radius (IRad) or total divergence to the average. It is based on the Kullback–Leibler divergence, with some notable (and useful) differences, including that it is symmetric and it always has a finite value. The square root of the Jensen–Shannon divergence is a metric often referred to as Jensen-Shannon distance.
+
+Previously, many people (including the author) believed that GANs produced sharp, realistic samples because they minimize the Jensen-Shannon di- vergence while VAEs produce blurry samples because they minimize the KL divergence between the data and the model.
+The KL divergence is not symmetric; minimizing $D_{KL}(p_{data}||p_{model})$ is different from minimizing $D_{KL}(p_{model}||p_{data})$. Maximum likelihood estimation perfer to generate samples that come only from modes in the training distribution even if that means ignoring some modes, rather than including all modes but generating some samples that do not come from any training set mode. 
+![](img/max_kl.png)
+
+
 ## Reference 
 1. Wang Y. A Mathematical Introduction to Generative Adversarial Nets (GAN)[J]. arXiv preprint arXiv:2009.00169, 2020.
 2. Goodfellow I J, Pouget-Abadie J, Mirza M, et al. Generative adversarial networks[J]. arXiv preprint arXiv:1406.2661, 2014.

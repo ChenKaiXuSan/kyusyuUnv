@@ -54,7 +54,7 @@ plt.ion()
 
 x = np.linspace(*DNA_BOUND, 200)
 # %%
-for _ in range(N_GENERATIONS):
+for i in range(N_GENERATIONS):
     # ES part 
     kid = make_kid(parent=parent)
     py, ky = F(parent), F(kid) # for plot 
@@ -67,5 +67,6 @@ for _ in range(N_GENERATIONS):
     plt.text(0, -7, 'Mutation strength=%.2f' % MUT_STRENGTH)
     plt.plot(x, F(x))
     plt.pause(0.05)
+    plt.savefig('ES_%d.png' % i)
 
 plt.ioff(); plt.show()

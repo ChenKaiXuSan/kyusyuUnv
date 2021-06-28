@@ -22,7 +22,7 @@ def eval_genomes(genomes, config):
 # Load configuration.
 config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                      neat.DefaultSpeciesSet, neat.DefaultStagnation,
-                     'NEAT/config-feedforward')
+                     r'Advanced_Tasks\A1_NEAT\NEAT\config-feedforward')
 
 # Create the population, which is the top-level object for a NEAT run.
 p = neat.Population(config)

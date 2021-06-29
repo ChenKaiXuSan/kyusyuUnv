@@ -40,7 +40,7 @@ y(t+1) = f_{out} * (W_{out} * (u(t+1), x(t+1)))
 $$
 $fout$ is the neuron activation function of the output layer.
 
-Now that we have the state of the reserve pool, and with the ESN output method, $Wout$ can be determined according to the target output $y(target)$, so that the loss between $y(t+1)$ and $y(target)$ is as small as possible. This is a simple linear regression problem.
+Now that we have the state of the reserve pool, and with the ESN output method, $W_{out}$ can be determined according to the target output $y(target)$, so that the loss between $y(t+1)$ and $y(target)$ is as small as possible. This is a simple linear regression problem.
 
 ## Reservior
 The reserve pool is the core structure of the network. 
@@ -59,6 +59,46 @@ It is the number of neurons in the reserve pool. The size of the reserve pool is
 4. The sparseness of the reserve pool SD. 
    It represents the connection between neurons in the reserve pool, and not all neurons in the reserve pool have connections. SD represents the percentage of the total number of interconnected neurons in the reserve pool to the total neuron N. The larger the value, the stronger the nonlinear approximation ability.
 
+## ESN network training
+The training process of ESN is the process of determining the coefficient and outputting the connection weight matrix $Wout$ according to the given training sample. 
+The training is divided into two stages: sampling stage and weight calculation stage.
+
+For the sake of simplicity, it is assumed that $Wback$ is 0, and the input-to-output and output-to-output connection weights are also assumed to be 0.
+
+### Sampling stage
+
+In the sampling phase, the initial state of the network is selected arbitrarily, but usually the initial state of the network is selected as 0, that is, $x(0)=0$.
+
+1. The training samples $(u(t), t=1,2,...,P)$ are added to the reserve pool through the input connection weight matrix $Win$.
+
+2. According to the aforementioned two state equations, complete the calculation and collection of the system state and output $y(t)$ in sequence.
+
+In order to calculate the output connection weight matrix, the internal state variables need to be collected (sampled) from a certain time $m$, and the vector $(x_1(i), x_2(i), ..., x_N(i))(i=m,m+1,....,P)$ is used as the row to form the matrix $B(P-m+1, N)$, and the corresponding sample data $y(t)$ is also are collected and form a column vector $T(P-m+1, 1)$.
+
+### Weight calculation stage
+
+The weight calculation is to calculate the output connection weight $Wout$ based on the system state matrix and sample data collected in the sampling phase. Because there is a linear relationship between the state variable $x(t)$ and the predicted output $\widehat{y}(t)$, the goal that needs to be achieved is to use the predicted output to approximate the expected output $y(t)$:
+$$
+y(k) \approx \widehat{y}(k) = \sum^L_{i=1} W^{out}_ix_i(k)\\
+\min\frac{1}{P-m+1}\sum^P_{k=m}(y(k)-\sum^L_{i=1}W^{out}_ix_i(k))^2 \\ 
+W_{out}=(M^{-1}\times T)^T
+$$
+
+>   $M$ is the input of $x_1(k), x_2(k), ..., x_n(k), k=m$,
+   $m+1, ..., P$ forms a matrix of $(P-m+1)\times N$,
+   $T$ is the output of the $y(k)$ forms a matrix of $(P-m+1)\times 1$
+
+At this point, the ESN network training has been completed, and the trained network can be used for specific problems in time series modeling.
+
+## Result 
+So in this time, I ues the Mackey-Glass time series to do this implement. 
+First to draw some data from the Mackey-Glass time series.
+![](img/mackey_glass.png)
+
+And then, after the ESN calculation, output some result and splot some signals.
+![](img/result_1.png)
+![](img/result_2.png)
+![](img/result_3.png)
 ## Reference 
 1. [Reservoir computing(wikipad)](https://en.wikipedia.org/wiki/Reservoir_computing)
 2. Schaetti, N., Salomon, M., & Couturier, R. (2016). Echo State Networks-Based Reservoir Computing for MNIST Handwritten Digits Recognition. 2016 IEEE Intl Conference on Computational Science and Engineering (CSE) and IEEE Intl Conference on Embedded and Ubiquitous Computing (EUC) and 15th Intl Symposium on Distributed Computing and Applications for Business Engineering (DCABES), 484-491.

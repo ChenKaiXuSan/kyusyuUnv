@@ -1,5 +1,4 @@
 # kyusyuUnv
-九州大学，申请学校
 
 This repository is the selection process of Kyushu University.  
 I put the two types of tasks in two folders respectively.
